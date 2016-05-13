@@ -33,10 +33,10 @@ namespace TestSystem.Core
 
             testingResults = numbersActual.ToList();
 
-            if (testingResults.Count < 15 || testingResults.Count > 40)
-            {
-                throw new FormatException();
-            }
+            //if (testingResults.Count < 15 || testingResults.Count > 40)
+            //{
+            //    throw new FormatException();
+            //}
 
             var correctResultsSum = 0f;
             var allReulstsSum = 0f;

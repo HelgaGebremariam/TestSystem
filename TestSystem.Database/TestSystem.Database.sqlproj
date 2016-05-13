@@ -57,17 +57,18 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Tables" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\Users.sql" />
-    <Build Include="Tables\UserInfo.sql" />
-    <Build Include="Tables\Roles.sql" />
-    <Build Include="Tables\TestSets.sql" />
-    <Build Include="Tables\Algorithms.sql" />
-    <Build Include="Tables\TestRuns.sql" />
-    <Build Include="Tables\TestResults.sql" />
-    <Build Include="Tables\UserSavedSettings.sql" />
+    <Build Include="dbo\Tables\TestSets.sql" />
+    <Build Include="dbo\Tables\UserSavedSettings.sql" />
+    <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Tables\UserInfo.sql" />
+    <Build Include="dbo\Tables\TestRuns.sql" />
+    <Build Include="dbo\Tables\TestResults.sql" />
+    <Build Include="dbo\Tables\Roles.sql" />
+    <Build Include="dbo\Tables\Algorithms.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="TestSystem.Database.refactorlog" />

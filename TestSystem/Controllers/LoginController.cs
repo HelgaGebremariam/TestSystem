@@ -86,9 +86,9 @@ namespace TestSystem.Controllers
                 return View(input);
             }
 
-            MD5 md5 = System.Security.Cryptography.MD5.Create();
+            MD5 md5 = MD5.Create();
             var hash = md5.ComputeHash(
-                    System.Text.Encoding.ASCII.GetBytes(input.Password));
+                    Encoding.ASCII.GetBytes(input.Password));
 
             StringBuilder password = new StringBuilder();
 

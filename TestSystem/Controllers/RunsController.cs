@@ -223,7 +223,7 @@ namespace TestSystem.Controllers
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         ModelState.AddModelError("FileFormatException", "Error occured in results processing. Please check file format.");
                         return View(model);
@@ -307,7 +307,7 @@ namespace TestSystem.Controllers
                     return RedirectToAction("RunResults", new { resultsId = resultsId });
                 }
 
-                model.CorrectRate = (Convert.ToSingle(results.CorrectRate) * 100).ToString() + "%";
+                model.CorrectRate = (Convert.ToSingle(results.CorrectRate) * 100) + "%";
                 model.RunNumber = results.TestRunId.ToString();
                 var testID = run.TestSetId;
                 model.TestName = context.TestSets.Find(testID).Name;
@@ -317,7 +317,7 @@ namespace TestSystem.Controllers
                 model.FalseNegativesNumber = Convert.ToSingle(results.FN) * 100 + "%";
                 model.FalsePositivesNumber = Convert.ToSingle(results.FP) * 100 + "%";
                 var ratioInt = Convert.ToInt32(run.TrainRatio);
-                model.Ratio = ratioInt.ToString() + @"/" + (100 - ratioInt).ToString();
+                model.Ratio = ratioInt + @"/" + (100 - ratioInt);
                 model.RocClass = run.RocClassNumber;
                 model.AUC = results.OtherInfo;
             }
@@ -340,15 +340,15 @@ namespace TestSystem.Controllers
                     return RedirectToAction("RunResultsRoc", new { resultsId = resultsID });
                 }
 
-                model.CorrectRate = (Convert.ToSingle(results.CorrectRate) * 100).ToString() + "%";
+                model.CorrectRate = (Convert.ToSingle(results.CorrectRate) * 100) + "%";
                 model.RunNumber = results.TestRunId.ToString();
                 var testID = run.TestSetId;
                 model.TestName = context.TestSets.Find(testID).Name;
                 model.AlgorithmName = context.Algorithms.Find(results.AlgorithmId).Name;
-                model.NumberOfRuns = (run.RunsNumber).ToString();
+                model.NumberOfRuns = (run.RunsNumber);
 
                 var ratioInt = Convert.ToInt32(run.TrainRatio);
-                model.Ratio = ratioInt.ToString() + @"/" + (100 - ratioInt).ToString();
+                model.Ratio = ratioInt + @"/" + (100 - ratioInt);
             }
 
             return View(model);
