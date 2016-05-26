@@ -13,7 +13,7 @@
 <script>
     var sizes = [40, 30, 25, 30, 10, 35, 7, 20];
 
-    $(function () {
+    $(function() {
         $("#runsGrid").jsGrid({
             height: "auto",
             width: "100%",
@@ -28,7 +28,7 @@
             pageIndex: 1,
 
             controller: {
-                loadData: function (filter) {
+                loadData: function(filter) {
                     var results;
                     var count
 
@@ -36,14 +36,14 @@
                         url: "/DataProvider/GetGridTests?page=" + filter.pageIndex + "&size=" + filter.pageSize,
                         dataType: "json",
                         async: false
-                    }).done(function (response) {
+                    }).done(function(response) {
                         results = response;
                     });
                     $.ajax({
                         url: "/DataProvider/GetGridCount?type=Tests",
                         dataType: "json",
                         async: false
-                    }).done(function (res) {
+                    }).done(function(res) {
                         count = res;
                     });
 
@@ -54,7 +54,7 @@
                 }
             },
 
-            rowRenderer: function (item) {
+            rowRenderer: function(item) {
                 return $("<tr>").append($("<td>").css("width", sizes[0]).append(item.TestName))
                     .append($("<td>").css("width", sizes[1]).append(item.Description))
                     .append($("<td>").css("width", sizes[2]).append(item.CreatedBy))
@@ -63,8 +63,7 @@
                     .append($("<td>").css("width", sizes[5]).append(item.LastRun))
                     .append($("<td>").css("width", sizes[6]).append(item.Runs))
                     .append($("<td>").css("width", sizes[7]).append($("<a>").css("color", "black")
-                        .attr("href", "/Testing/TestDetails?testName=" + item.TestName).append("Details")))
-                ;
+                        .attr("href", "/Testing/TestDetails?testName=" + item.TestName).append("Details")));
             },
 
             fields: [
@@ -80,3 +79,7 @@
         });
     });
 </script>
+<p></p>
+<p></p>
+<p></p>
+<button class="ui-button">Generate sequence</button>
