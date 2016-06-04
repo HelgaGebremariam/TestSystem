@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExponentialSequenceGenerator.cs" />
     <Compile Include="GaussianSequenceGenerator.cs" />
     <Compile Include="Interfaces\ISequenceGenerator.cs" />
     <Compile Include="MushGenerator.cs" />
