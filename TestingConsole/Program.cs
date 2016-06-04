@@ -14,12 +14,12 @@ namespace TestingConsole
         static void Main(string[] args)
         {
             IRandomGenerator randomGenerator = new MushGenerator();
-            ISequenceGenerator sequenceGenerator = new GaussianSequenceGenerator(randomGenerator);
+            ISequenceGenerator sequenceGenerator = new SequenceGenerator(randomGenerator);
             StatisticsCreator statisticsCreator = new StatisticsCreator(sequenceGenerator);
             sequenceGenerator.Min = 0;
             sequenceGenerator.Max = 1;
             sequenceGenerator.RoofMeanSquareDeviation = 0.1;
-            double[] sequence = sequenceGenerator.GenerateSequence();
+            int []gistogramm = statisticsCreator.CreateGistogramm(30);
         }
     }
 }

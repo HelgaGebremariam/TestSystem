@@ -11,7 +11,6 @@ namespace TestSystem.TestGenerator
     {
         private ISequenceGenerator _sequenceGenerator;
         private double[] _sequence;
-        private int _sequenceLength;
         public StatisticsCreator(ISequenceGenerator sequenceGenerator)
         {
             _sequenceGenerator = sequenceGenerator;
@@ -21,13 +20,13 @@ namespace TestSystem.TestGenerator
         {
             if (_sequence == null)
             {
-                _sequenceGenerator.GenerateSequence();
+                _sequence = _sequenceGenerator.GenerateSequence();
             }
             int[] gistogramm = new int[countIntervals];
             int diapason = 1;
             double diapasonSize = (double)diapason / countIntervals;
 
-            for (int i = 0; i < _sequenceLength; i++)
+            for (int i = 0; i < _sequenceGenerator.SequenceLength; i++)
             {
                 int intervalNumber = (int)(_sequence[i] / diapasonSize);
 
@@ -42,11 +41,11 @@ namespace TestSystem.TestGenerator
             get
             {
                 double sum = 0;
-                for (int i = 0; i < _sequenceLength; i++)
+                for (int i = 0; i < _sequence.Length; i++)
                 {
                     sum += _sequence[i];
                 }
-                return (double)sum / _sequenceLength;
+                return (double)sum / _sequence.Length;
             }
         }
 
@@ -56,11 +55,11 @@ namespace TestSystem.TestGenerator
             {
                 double mathematicalExpectation = MathematicalExpectation;
                 double dispersion = 0;
-                for (int i = 0; i < _sequenceLength; i++)
+                for (int i = 0; i < _sequence.Length; i++)
                 {
                     dispersion += Math.Pow(_sequence[i] - mathematicalExpectation, 2);
                 }
-                dispersion /= _sequenceLength;
+                dispersion /= _sequence.Length;
                 return dispersion;
             }
         }
@@ -77,12 +76,12 @@ namespace TestSystem.TestGenerator
             get
             {
                 int K = 0;
-                for (int i = 1; i < _sequenceLength; i += 2)
+                for (int i = 1; i < _sequence.Length; i += 2)
                 {
                     if (Math.Pow((double)_sequence[i], 2) + Math.Pow((double)_sequence[i - 1], 2) < 1)
                         K++;
                 }
-                return (2 * (double)K) / (double)_sequenceLength;
+                return (2 * (double)K) / (double)_sequence.Length;
             }
         }
     }
