@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -176,6 +177,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DataProviderController.cs" />
+    <Compile Include="Controllers\GeneratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RunsController.cs" />
@@ -186,6 +188,7 @@
     <Compile Include="Models\AlgorithmDescriptionViewModel.cs" />
     <Compile Include="Models\AlgorithmViewModel.cs" />
     <Compile Include="Models\CreateTestRunViewModel.cs" />
+    <Compile Include="Models\GeneratorParamentersViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\RunsModels\AllRunsViewModel.cs" />
     <Compile Include="Models\RunsModels\RunDetailsViewModel.cs" />
@@ -220,6 +223,9 @@
     <Content Include="Views\Runs\AllRuns.cshtml" />
     <Content Include="Views\Testing\TestDetails.cshtml" />
     <Content Include="Views\Testing\AlgDetails.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Generator\Index.cshtml" />
+    <Content Include="Views\Generator\SequenceStatistics.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -239,6 +245,10 @@
     <ProjectReference Include="..\TestSystem.DataAccess\TestSystem.DataAccess.csproj">
       <Project>{ebe586f6-c463-49c9-a2d7-71e9ea24f9fe}</Project>
       <Name>TestSystem.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestSystem.TestGenerator\TestSystem.TestGenerator.csproj">
+      <Project>{b8734a39-e52b-4698-a562-be0de55d1661}</Project>
+      <Name>TestSystem.TestGenerator</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

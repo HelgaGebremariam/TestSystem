@@ -43,11 +43,12 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">TestSets <span class="caret"></span></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">Test Sets <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>@Html.ActionLink("Test sets", "TestSets", "Testing")</li>
                             @if (HttpContext.Current.User.Identity.IsAuthenticated)
                             {
+                                <li>@Html.ActionLink("Generate test", "Index", "Generator")</li>
                                 <li>@Html.ActionLink("Upload test", "UploadTest", "Testing")</li>
                             }
                         </ul>

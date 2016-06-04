@@ -14,6 +14,7 @@ namespace TestSystem.TestGenerator.Interfaces
         double RoofMeanSquareDeviation { get; set; }
         double Min { get; set; }
         double Max { get; set; }
+        int Nu { get; set; }
         double[] GenerateSequence();
     }
 }

@@ -1,0 +1,52 @@
+﻿@model TestSystem.Models.GeneratorParamentersViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Sequence Generator";
+}
+@using (Html.BeginForm())
+{
+    <div>
+        <ul>
+            <li>
+                @Html.LabelFor(m=>m.SequenceDestribution)
+                @Html.EnumDropDownListFor(m => m.SequenceDestribution)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.SequenceLength)
+                @Html.EditorFor(m => m.SequenceLength)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.MathematicalExpectation)
+                @Html.EditorFor(m => m.MathematicalExpectation)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Min)
+                @Html.EditorFor(m => m.Min)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Max)
+                @Html.EditorFor(m => m.Max)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.N)
+                @Html.EditorFor(m => m.N)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Nu)
+                @Html.EditorFor(m => m.Nu)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.RoofMeanSquareDeviation)
+                @Html.EditorFor(m => m.RoofMeanSquareDeviation)
+            </li>
+        </ul>
+
+        <button type="submit">Generate</button>
+    </div>
+}
+
+@Html.Partial("SequenceStatistics")

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestSystem.TestGenerator</RootNamespace>
     <AssemblyName>TestSystem.TestGenerator</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,13 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExponentialSequenceGenerator.cs" />
+    <Compile Include="GammaSequenceGenerator.cs" />
     <Compile Include="GaussianSequenceGenerator.cs" />
     <Compile Include="Interfaces\ISequenceGenerator.cs" />
     <Compile Include="MushGenerator.cs" />
     <Compile Include="SequenceGenerator.cs" />
+    <Compile Include="SimpsonSequenceGenerator.cs" />
     <Compile Include="StatisticsCreator.cs" />
     <Compile Include="Interfaces\IRandomGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TriangleSequenceGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

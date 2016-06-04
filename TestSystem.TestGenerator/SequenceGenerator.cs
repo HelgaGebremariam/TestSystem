@@ -79,6 +79,18 @@ namespace TestSystem.TestGenerator
             set { _max = value; }
         }
 
+        protected int _nu;
+        public int Nu
+        {
+            get
+            {
+                if (_nu <= 0)
+                    _nu = 1;
+                return _nu;
+            }
+            set { _nu = value; }
+        }
+
         protected double[] GenerateSequence(int length)
         {
             double[] sequence = new double[length];
