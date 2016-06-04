@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Lab02_MultilayerPerceptron")]
+[assembly: AssemblyTitle("TestingConsole")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Lab02_MultilayerPerceptron")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCompany("EPAM Systems")]
+[assembly: AssemblyProduct("TestingConsole")]
+[assembly: AssemblyCopyright("Copyright © EPAM Systems 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b3489ff9-9931-4ee9-9642-4f2c7e8fe79d")]
+[assembly: Guid("4faebc61-7993-4073-bae6-5365a051f312")]
 
 // Version information for an assembly consists of the following four values:
 //
