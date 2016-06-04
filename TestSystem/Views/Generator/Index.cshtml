@@ -12,7 +12,7 @@
     <div>
         <ul>
             <li>
-                @Html.LabelFor(m=>m.SequenceDestribution)
+                @Html.LabelFor(m => m.SequenceDestribution)
                 @Html.EnumDropDownListFor(m => m.SequenceDestribution)
             </li>
             <li>
@@ -47,6 +47,5 @@
 
         <button type="submit">Generate</button>
     </div>
+    <p><image src="/Generator/SequenceStatistics" /> </p>
 }
-
-@Html.Partial("SequenceStatistics")

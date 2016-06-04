@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using TestSystem.Models;
 using TestSystem.TestGenerator;
@@ -11,7 +12,6 @@ namespace TestSystem.Controllers
 {
     public class GeneratorController : Controller
     {
-        // GET: Generator
         [HttpGet]
         public ActionResult Index()
         {
@@ -22,6 +22,19 @@ namespace TestSystem.Controllers
         public ActionResult Index(GeneratorParamentersViewModel model)
         {
             return View();
+        }
+
+        public ActionResult SequenceStatistics()
+        {
+            SequenceStatisticsViewModel model = new SequenceStatisticsViewModel();
+            string[] xValues = new string[5];
+            for (int i = 0; i < 5; i++)
+                xValues[i] = " ";
+            model.Gistogramm = new Chart(500, 100);
+            model.Gistogramm.AddTitle("Distribution Gistogramm");
+            model.Gistogramm.AddSeries(xValue: xValues,
+                yValues: new int[] {2, 6, 4, 5, 3});
+            return View(model);
         }
     }
 }

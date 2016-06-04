@@ -11,7 +11,9 @@ namespace TestSystem.Models
         Uniform,
         Gaussian,
         Exponential,
-        Gamma
+        Gamma,
+        Simpson,
+        Triangle
     }
     public class GeneratorParamentersViewModel
     {
