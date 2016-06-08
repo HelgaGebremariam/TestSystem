@@ -170,7 +170,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jsgrid.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="Scripts\StatisticsChart.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +229,7 @@
     <Content Include="Views\Testing\AlgDetails.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Generator\Index.cshtml" />
+    <Content Include="Views\Generator\SequenceStatisticsChart.cshtml" />
     <Content Include="Views\Generator\SequenceStatistics.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

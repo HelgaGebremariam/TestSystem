@@ -35,6 +35,8 @@ namespace TestSystem.Models
         public double Max { get; set; }
         [Display(Name = "η")]
         public int Nu { get; set; }
+        [Display(Name = "Gistogramm Segments Count")]
+        public int GistogrammSegmentsCount { get; set; }
 
     }
 }

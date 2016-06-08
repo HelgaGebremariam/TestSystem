@@ -15,6 +15,9 @@ namespace TestSystem.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            if (Request.IsAjaxRequest())
+                return PartialView("SequenceStatistics");
+
             return View();
         }
 
@@ -24,17 +27,33 @@ namespace TestSystem.Controllers
             return View();
         }
 
-        public ActionResult SequenceStatistics()
+        public PartialViewResult SequenceStatistics()
         {
             SequenceStatisticsViewModel model = new SequenceStatisticsViewModel();
-            string[] xValues = new string[5];
-            for (int i = 0; i < 5; i++)
+            return PartialView(model);
+        }
+        [HttpPost]
+        public PartialViewResult SequenceStatistics(GeneratorParamentersViewModel model)
+        {
+            SequenceStatisticsViewModel sequenceStatsticsModel = new SequenceStatisticsViewModel();
+            return PartialView();
+        }
+        public ActionResult SequenceStatisticsChart(SequenceStatisticsViewModel model)
+        {
+            IRandomGenerator randomGenerator = new MushGenerator();
+            ISequenceGenerator sequenceGenerator = new SequenceGenerator(randomGenerator);
+            StatisticsCreator statisticsCreator = new StatisticsCreator(sequenceGenerator);
+            sequenceGenerator.Min = 0;
+            sequenceGenerator.Max = 1;
+            sequenceGenerator.RoofMeanSquareDeviation = 0.1;
+            int[] gistogramm = statisticsCreator.CreateGistogramm(30);
+            string[] xValues = new string[30];
+            for (int i = 0; i < 30; i++)
                 xValues[i] = " ";
-            model.Gistogramm = new Chart(500, 100);
-            model.Gistogramm.AddTitle("Distribution Gistogramm");
+            model.Gistogramm = new Chart(500, 400, ChartTheme.Blue);
             model.Gistogramm.AddSeries(xValue: xValues,
-                yValues: new int[] {2, 6, 4, 5, 3});
-            return View(model);
+    yValues: gistogramm);
+            return PartialView(model);
         }
     }
 }

@@ -1,51 +1,135 @@
-﻿@model TestSystem.Models.GeneratorParamentersViewModel
+﻿@using System.Web.Optimization
+@model TestSystem.Models.GeneratorParamentersViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    AjaxOptions ajaxOptions = new AjaxOptions
+    {
+        UpdateTargetId = "dvChart",
+        HttpMethod = "Post"
+    };
 }
-
+<head>
+    <script type="text/javascript" src="../../Scripts/StatisticsChart.js"></script>
+</head>
+@Styles.Render("~/Content/bootstrap.min.css")
 @{
     ViewBag.Title = "Sequence Generator";
 }
+
 @using (Html.BeginForm())
 {
-    <div>
-        <ul>
-            <li>
-                @Html.LabelFor(m => m.SequenceDestribution)
-                @Html.EnumDropDownListFor(m => m.SequenceDestribution)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.SequenceLength)
-                @Html.EditorFor(m => m.SequenceLength)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.MathematicalExpectation)
-                @Html.EditorFor(m => m.MathematicalExpectation)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Min)
-                @Html.EditorFor(m => m.Min)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Max)
-                @Html.EditorFor(m => m.Max)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.N)
-                @Html.EditorFor(m => m.N)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Nu)
-                @Html.EditorFor(m => m.Nu)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.RoofMeanSquareDeviation)
-                @Html.EditorFor(m => m.RoofMeanSquareDeviation)
-            </li>
-        </ul>
+    <div class="container">
+        <div class="row">
 
-        <button type="submit">Generate</button>
+
+            <div class="col-sm-8">
+                @Html.ValidationSummary()
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.SequenceDestribution)
+                            </div>
+                            <div class="col-sm-8">
+                                @Html.EnumDropDownListFor(m => m.SequenceDestribution)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.SequenceLength)
+                            </div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(m => m.SequenceLength)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.MathematicalExpectation)
+                            </div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(m => m.MathematicalExpectation)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.Min)
+                            </div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(m => m.Min)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.Max)
+                            </div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(m => m.Max)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.N)
+                            </div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(m => m.N)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.Nu)
+                            </div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(m => m.Nu)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.RoofMeanSquareDeviation)
+                            </div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(m => m.RoofMeanSquareDeviation)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                @Html.LabelFor(m => m.GistogrammSegmentsCount)
+                            </div>
+                            <div class="col-sm-8">
+                                @Html.EditorFor(m => m.GistogrammSegmentsCount)
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+
+            <div id="container">
+                <div id="dvChart" class="col-sm-4">
+                    @Html.Partial("SequenceStatistics", Model)
+                </div>
+            </div>
+            <button id="btnLoadChart" type="button">submit</button>
+            @Ajax.ActionLink("Generate", "SequenceStatistics", "Generator", new {}, ajaxOptions)
+
+        </div>
     </div>
-    <p><image src="/Generator/SequenceStatistics" /> </p>
+
 }
